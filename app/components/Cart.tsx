@@ -112,7 +112,7 @@ function CartDiscounts({
         <div
           className={clsx(
             'flex',
-            'items-center gap-4 justify-between text-copy',
+            'items-center gap-4 justify-between text-copy text-primary/70',
           )}
         >
           <input
@@ -218,7 +218,7 @@ function CartSummary({
         Order summary
       </h2>
       <dl className="grid">
-        <div className="flex items-center justify-between font-medium">
+        <div className="flex items-center justify-between font-medium text-primary/90">
           <Text as="dt">Subtotal</Text>
           <Text as="dd" data-test="subtotal">
             {cost?.subtotalAmount?.amount ? (
@@ -270,7 +270,7 @@ function CartLineItem({line}: {line: CartLine}) {
         )}
       </div>
 
-      <div className="flex justify-between flex-grow">
+      <div className="flex justify-between flex-grow text-primary/60">
         <div className="grid gap-2">
           <Heading as="h3" size="copy">
             {merchandise?.product?.handle ? (
@@ -315,7 +315,7 @@ function ItemRemoveButton({lineId}: {lineId: CartLine['id']}) {
       }}
     >
       <button
-        className="flex items-center justify-center w-10 h-10 border rounded"
+        className="flex items-center justify-center w-10 h-10 border rounded text-primary/60"
         type="submit"
       >
         <span className="sr-only">Remove</span>
@@ -343,12 +343,12 @@ function CartLineQuantityAdjust({line}: {line: CartLine}) {
       <label htmlFor={`quantity-${lineId}`} className="sr-only">
         Quantity, {optimisticQuantity}
       </label>
-      <div className="flex items-center border rounded">
+      <div className="flex items-center border rounded text-primary/60">
         <UpdateCartButton lines={[{id: lineId, quantity: prevQuantity}]}>
           <button
             name="decrease-quantity"
             aria-label="Decrease quantity"
-            className="w-10 h-10 transition text-primary/50 hover:text-primary disabled:text-primary/10"
+            className="w-10 h-10 transition text-primary/60 hover:text-primary disabled:text-primary/10"
             value={prevQuantity}
             disabled={optimisticQuantity <= 1}
           >

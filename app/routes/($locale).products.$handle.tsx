@@ -5,8 +5,6 @@ import {Analytics, useSelectedOptionInUrlParam} from '@shopify/hydrogen';
 import {XoBuilder} from '@xotiny/xb-react-elements';
 import invariant from 'tiny-invariant';
 
-import {elements} from '~/config/elements';
-import {product_default} from '~/data/product';
 import {seoPayload} from '~/lib/seo.server';
 
 export async function loader(args: LoaderFunctionArgs) {
@@ -19,7 +17,6 @@ export async function loader(args: LoaderFunctionArgs) {
   const criticalData = await XoBuilder.loadPageData({
     pageType: 'product',
     args,
-    data: product_default,
   });
 
   const {shopifyData} = criticalData;
@@ -53,13 +50,10 @@ export default function Product() {
     productDetail.selectedOrFirstAvailableVariant.selectedOptions,
   );
 
-  console.log(pageData, shopifyData);
-
   return (
     <>
       <XoBuilder.Layout
         isDev={process.env.NODE_ENV === 'development'}
-        elements={elements}
         page={pageData}
         shopifyData={shopifyData}
         cssContent={cssContent}

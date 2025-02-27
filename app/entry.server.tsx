@@ -2,7 +2,7 @@ import type {AppLoadContext, EntryContext} from '@shopify/remix-oxygen';
 import {RemixServer} from '@remix-run/react';
 import isbot from 'isbot';
 import {renderToReadableStream} from 'react-dom/server';
-import {createContentSecurityPolicy} from '@shopify/hydrogen';
+import {XoBuilder} from '@xotiny/xb-react-elements';
 
 export default async function handleRequest(
   request: Request,
@@ -11,48 +11,19 @@ export default async function handleRequest(
   remixContext: EntryContext,
   context: AppLoadContext,
 ) {
-  const {nonce, header, NonceProvider} = createContentSecurityPolicy({
+  const {nonce, header, NonceProvider} = XoBuilder.createContentSecurityPolicy({
     shop: {
       checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
       storeDomain: context.env.PUBLIC_STORE_DOMAIN,
     },
     scriptSrc: [
-      "'self'",
-      "'unsafe-eval'",
+      'self',
       'https://cdn.shopify.com',
       'https://shopify.com',
       'https://www.google-analytics.com',
       'https://www.googletagmanager.com',
-      'https://xo-builder.myshopify.com',
-      'https://cdn.xotiny.com',
-      'https://unpkg.com/@google/',
       ...(process.env.NODE_ENV !== 'production' ? ['http://localhost:*'] : []),
     ],
-    imgSrc: [
-      "'self'",
-      'https://cdn.shopify.com',
-      'https://shopify.com',
-      'https://xo-builder.myshopify.com',
-      'https://cdn.xotiny.com',
-      'blob:',
-      ...(process.env.NODE_ENV !== 'production' ? ['http://localhost:*'] : []),
-    ],
-    styleSrc: [
-      "'self'",
-      "'unsafe-inline'",
-      'https://fonts.googleapis.com',
-      'https://cdn.shopify.com',
-      'https://xo-builder.myshopify.com',
-      'https://cdn.xotiny.com',
-      ...(process.env.NODE_ENV !== 'production' ? ['http://localhost:*'] : []),
-    ],
-    fontSrc: [
-      "'self'",
-      'https://fonts.gstatic.com',
-      ...(process.env.NODE_ENV !== 'production' ? ['http://localhost:*'] : []),
-    ],
-    objectSrc: ["'self'", 'blob:'],
-    connectSrc: ["'self'", 'blob:', 'vimeo.com', '*.google-analytics.com'],
   });
 
   const body = await renderToReadableStream(

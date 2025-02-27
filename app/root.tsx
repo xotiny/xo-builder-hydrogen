@@ -33,8 +33,6 @@ import {PageLayout} from '~/components/PageLayout';
 import {seoPayload} from '~/lib/seo.server';
 import '~/styles/app.css';
 import '~/styles/reset.css';
-import '~/styles/xo-builder.base.css';
-import '~/wc/wc.css';
 import wcJs from '~/wc/wc.js?url';
 
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
@@ -144,7 +142,6 @@ function Layout({children}: {children?: React.ReactNode}) {
   const nonce = useNonce();
   const data = useRouteLoaderData<typeof loader>('root');
   const locale = data?.selectedLocale ?? DEFAULT_LOCALE;
-  // @ts-ignore
 
   return (
     <XoBuilder.Root>

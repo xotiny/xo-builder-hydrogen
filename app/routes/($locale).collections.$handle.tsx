@@ -5,8 +5,6 @@ import {Analytics} from '@shopify/hydrogen';
 import {XoBuilder} from '@xotiny/xb-react-elements';
 import invariant from 'tiny-invariant';
 
-import {elements} from '~/config/elements';
-import {collection_default} from '~/data/collection';
 import {seoPayload} from '~/lib/seo.server';
 
 export const handle = {
@@ -23,7 +21,6 @@ export async function loader(args: LoaderFunctionArgs) {
   const criticalData = await XoBuilder.loadPageData({
     pageType: 'collection',
     args,
-    data: collection_default,
   });
 
   const {shopifyData} = criticalData;
@@ -50,14 +47,12 @@ export const meta: MetaFunction<typeof loader> = (data) => {
 
 export default function Collection() {
   const {pageData, shopifyData, cssContent} = useLoaderData<typeof loader>();
-  console.log(pageData, shopifyData);
   const {collectionDetail} = shopifyData;
 
   return (
     <>
       <XoBuilder.Layout
         isDev={process.env.NODE_ENV === 'development'}
-        elements={elements}
         page={pageData}
         shopifyData={shopifyData}
         cssContent={cssContent}
@@ -65,8 +60,8 @@ export default function Collection() {
       <Analytics.CollectionView
         data={{
           collection: {
-            id: collectionDetail?.collection?.id,
-            handle: collectionDetail?.collection?.handle,
+            id: collectionDetail?.collection?.id ?? '',
+            handle: collectionDetail?.collection?.handle ?? '',
           },
         }}
       />

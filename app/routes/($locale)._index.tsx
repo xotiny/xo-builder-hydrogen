@@ -3,8 +3,6 @@ import type {LoaderFunctionArgs} from '@remix-run/server-runtime';
 import {defer} from '@remix-run/server-runtime';
 import {XoBuilder} from '@xotiny/xb-react-elements';
 
-import {elements} from '~/config/elements';
-import {home_default} from '~/data/home';
 import {seoPayload} from '~/lib/seo.server';
 
 export async function loader(args: LoaderFunctionArgs) {
@@ -24,7 +22,6 @@ export async function loader(args: LoaderFunctionArgs) {
   const criticalData = await XoBuilder.loadPageData({
     pageType: 'home',
     args,
-    data: home_default,
   });
 
   const seo = {
@@ -40,15 +37,11 @@ export const meta: MetaFunction<typeof loader> = (metaData) => {
 };
 
 export default function Homepage() {
-  const {pageData, shopifyData, cssContent, metaData, seo} =
-    useLoaderData<typeof loader>();
-
-  console.log(metaData, seo);
+  const {pageData, shopifyData, cssContent} = useLoaderData<typeof loader>();
 
   return (
     <XoBuilder.Layout
       isDev={process.env.NODE_ENV === 'development'}
-      elements={elements}
       page={pageData}
       shopifyData={shopifyData}
       cssContent={cssContent}
