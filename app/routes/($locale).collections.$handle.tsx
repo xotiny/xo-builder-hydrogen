@@ -60,8 +60,8 @@ export default function Collection() {
       <Analytics.CollectionView
         data={{
           collection: {
-            id: collectionDetail?.collection?.id ?? '',
-            handle: collectionDetail?.collection?.handle ?? '',
+            id: collectionDetail?.collection?.id,
+            handle: collectionDetail?.collection?.handle,
           },
         }}
       />

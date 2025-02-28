@@ -243,7 +243,7 @@ function collection({
   collection,
   url,
 }: {
-  collection: any;
+  collection: CollectionRequiredFields;
   url: Request['url'];
 }): SeoConfig {
   return {

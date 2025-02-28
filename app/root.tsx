@@ -33,7 +33,7 @@ import {PageLayout} from '~/components/PageLayout';
 import {seoPayload} from '~/lib/seo.server';
 import '~/styles/app.css';
 import '~/styles/reset.css';
-import wcJs from '~/wc/wc.js?url';
+import wcJs from '~/assets/wc.js?url';
 
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 
