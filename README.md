@@ -78,12 +78,14 @@ npm i @xotiny/xb-react-elements@latest
 });
 ```
 
-### [`($locale)._index.tsx`](https://github.com/xotiny/xo-builder-hydrogen/blob/main/app/routes/(%24locale)._index.tsx)
+## 📂 Files to Modify  
+You need to update the following files to ensure the page functions correctly when published using XO Builder.  
 
-### [`($locale).products.$handle.tsx`](https://github.com/xotiny/xo-builder-hydrogen/blob/main/app/routes/(%24locale).products.%24handle.tsx)
+- [`($locale)._index.tsx`](https://github.com/xotiny/xo-builder-hydrogen/blob/main/app/routes/(%24locale)._index.tsx) – Corresponds to the **Home Page**  
+- [`($locale).products.$handle.tsx`](https://github.com/xotiny/xo-builder-hydrogen/blob/main/app/routes/(%24locale).products.%24handle.tsx) – Corresponds to the **Product Page**  
+- [`($locale).collections.$handle.tsx`](https://github.com/xotiny/xo-builder-hydrogen/blob/main/app/routes/(%24locale).collections.%24handle.tsx) – Corresponds to the **Collection Page**  
+- [`($locale).pages.$handle.tsx`](https://github.com/xotiny/xo-builder-hydrogen/blob/main/app/routes/(%24locale).pages.%24handle.tsx) – Corresponds to the **Regular Page**  
+- [`($locale).blogs.$blogHandle.$handle.tsx`](https://github.com/xotiny/xo-builder-hydrogen/blob/main/app/routes/(%24locale).blogs.%24blogHandle.%24handle.tsx) – Corresponds to the **Article Page**  
 
-### [`($locale).collections.$handle.tsx`](https://github.com/xotiny/xo-builder-hydrogen/blob/main/app/routes/(%24locale).collections.%24handle.tsx)
-
-### [`($locale).pages.$handle.tsx`](https://github.com/xotiny/xo-builder-hydrogen/blob/main/app/routes/(%24locale).pages.%24handle.tsx)
-
-### [`($locale).blogs.$blogHandle.$handle.tsx`](https://github.com/xotiny/xo-builder-hydrogen/blob/main/app/routes/(%24locale).blogs.%24blogHandle.%24handle.tsx)
+### ⚠️ Note  
+Only copy the file corresponding to the page type you are using. 
